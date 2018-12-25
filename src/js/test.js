@@ -1,5 +1,5 @@
 
 console.log('test module')
-export default 23;
+export default 123459;
 
 
