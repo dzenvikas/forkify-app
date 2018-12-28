@@ -1,8 +1,44 @@
 // Global app controller
+import Search from './models/Search';
+import * as searchView from './views/searchView';
+import {elements} from './views/base';
 
-import num from './test';
-const x = 23;
-console.log(`I imported ${num} successfully from test.js! Variable x is: ${x}`);
+/** Global app state
+ * - Search object
+ * - Current recipe object
+ * - Shopping list object
+ * - Liked recipes object
+ */
+const state = {};
+
+const controlSearch = async () => {
+    // 1. get query from view
+    const query = searchView.getInput();
+    // 2. If query, create new search object & add to app state
+    if (query) {
+        state.search = new Search(query);
+        // prepare UI for results
+        searchView.clearInput();
+        // search for recipes
+        await state.search.getResults();
+
+        // render results on UI
+        searchView.clearResults();
+        searchView.renderResults(state.search.result);
+        console.log(state);
+        console.log(state.search.result);
+    }
+
+};
+
+// Event listeners
+elements.searchForm.addEventListener('submit', e => {
+    e.preventDefault();
+    controlSearch();
+});
+
+
+// search.getResults();
 
 
 
