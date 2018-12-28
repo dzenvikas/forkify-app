@@ -40,6 +40,16 @@ elements.searchForm.addEventListener('submit', e => {
     controlSearch();
 });
 
+elements.searchResPagination.addEventListener('click', e => {
+    const btn = e.target.closest('.btn-inline');
+    console.log(btn);
+    if (btn) {
+        const goToPage = parseInt(btn.dataset.goto, 10);  // accessing custom data-attribute value;
+        searchView.clearResults();
+        searchView.renderResults(state.search.result, goToPage);
+
+    }
+})
 
 // search.getResults();
 
