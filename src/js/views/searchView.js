@@ -28,7 +28,7 @@ const limitRecipeTitile = (title, limit = 17) => {
 const renderRecipe = recipe => {
     const markup =`
         <li>
-            <a class="results__link results__link--active" href="${recipe.recipe_id}">
+            <a class="results__link results__link--active" href="#${recipe.recipe_id}">
                 <figure class="results__fig">
                     <img src="${recipe.image_url}" alt="${recipe.title}">
                 </figure>
@@ -67,7 +67,7 @@ const renderPagination = (page, results, resPerPage) => {
         // pagination to go to previous pages
         button = createPagination(page, 'prev');
     }
-    console.log(button);
+    // console.log(button);
     elements.searchResPagination.insertAdjacentHTML('afterbegin', button);
 };
 
