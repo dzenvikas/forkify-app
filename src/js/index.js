@@ -4,7 +4,6 @@ import Recipe from './models/Recipe';
 import * as searchView from './views/searchView';
 import * as recipeView from './views/recipeView';
 import {elements, renderSpinner, clearSpinner} from './views/base';
-import { Fraction } from 'fraction.js';
 
 /** Global app state
  * - Search object
@@ -76,6 +75,9 @@ const controlRecipe = async () => {
         // prepare UI for changes
         recipeView.clearRecipe();
         renderSpinner(elements.recipe);
+        
+        // highlight selected recipe
+        if (state.search) searchView.highlightSelected(id);
 
         // create new recipe object
         state.recipe = new Recipe(id);

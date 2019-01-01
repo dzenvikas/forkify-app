@@ -10,6 +10,16 @@ export const clearResults = () => {
     elements.searchResPagination.innerHTML = '';
 };
 
+export const highlightSelected = id => {
+    // document.querySelectorAll('results__link').classList.remove('results__link--active');
+
+    const resultsArr = Array.from(document.querySelectorAll('.results__link'));
+    resultsArr.forEach(el => {
+        el.classList.remove('results__link--active');
+    })
+    document.querySelector(`a[href="#${id}"]`).classList.add('results__link--active');
+};
+
 // example: 'My target is to master JavaScript'.
 const limitRecipeTitile = (title, limit = 17) => {
     const newTitle = [];
@@ -28,7 +38,7 @@ const limitRecipeTitile = (title, limit = 17) => {
 const renderRecipe = recipe => {
     const markup =`
         <li>
-            <a class="results__link results__link--active" href="#${recipe.recipe_id}">
+            <a class="results__link" href="#${recipe.recipe_id}">
                 <figure class="results__fig">
                     <img src="${recipe.image_url}" alt="${recipe.title}">
                 </figure>
