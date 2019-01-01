@@ -73,7 +73,7 @@ const controlRecipe = async () => {
     if (id) {
 
         // prepare UI for changes
-        elements.recipe.innerHTML = '';
+        recipeView.clearRecipe();
         renderSpinner(elements.recipe);
 
         // create new recipe object

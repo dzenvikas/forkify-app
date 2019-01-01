@@ -1,5 +1,9 @@
 import {elements} from './base';
 
+export const clearRecipe = ()=> {
+    elements.recipe.innerHTML = '';
+}
+
 const createIngredient = ingredient => {
     console.log(ingredient);
     return /*html*/`
